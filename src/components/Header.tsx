@@ -130,7 +130,7 @@ export default function Header({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 z-50 flex flex-col bg-bg-light dark:bg-bg-dark text-primary-light dark:text-primary-dark"
+            className="fixed inset-0 z-50 flex flex-col bg-white dark:bg-black text-primary-light dark:text-primary-dark"
             id="mobile-nav-menu"
           >
             <div className="flex h-20 items-center justify-between px-6 sm:px-8 border-b border-border-light dark:border-border-dark">
