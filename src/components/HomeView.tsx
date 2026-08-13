@@ -28,6 +28,7 @@ export default function HomeView({ setView, openContact, setSelectedProject, set
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMA_WB9xjBg1EZNR0yGbwlvPdUobnzFIjeGVVDuxbIM1YZ79eG2ggggKifr7s9UcJbsDOWcCVUUWduFUahVn24HSd7SBQee1mGM2OxuOe_r-fJNKWgBfPW7NOk7DlXjPKQtnrdXx9eeIFIiaM2l5KfpAdNgHnshD9uYTCT2is_J59xdl89levEzrw-GpUnJVL5zpG6xjf62lkJ2BAAti5smwz-g8kJCZbd0rhEhs9_zDxfGqW5Yaaz"
             alt="Aether Architecture Hero"
             referrerPolicy="no-referrer"
+            fetchPriority="high"
             className="h-full w-full object-cover grayscale brightness-[0.85] contrast-[1.05] transition-all duration-700 dark:brightness-[0.35]"
           />
           {/* Solid deep wash overlay for reliable text contrast */}
@@ -230,6 +231,8 @@ export default function HomeView({ setView, openContact, setSelectedProject, set
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
                 />
@@ -278,6 +281,8 @@ export default function HomeView({ setView, openContact, setSelectedProject, set
               <img
                 src={TESTIMONIAL.image}
                 alt={TESTIMONIAL.author}
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="h-14 w-14 rounded-full border-2 object-cover border-white/20 dark:border-primary-dark/20 grayscale"
               />
@@ -326,6 +331,8 @@ export default function HomeView({ setView, openContact, setSelectedProject, set
                 <img
                   src={post.image}
                   alt={post.title}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
                 />

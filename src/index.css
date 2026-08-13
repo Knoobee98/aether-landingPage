@@ -18,6 +18,44 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Brutalist Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-light);
+    border-left: 1px solid var(--color-border-light);
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+    border-left: 1px solid var(--color-border-dark);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary-light);
+    border: 2px solid var(--color-bg-light);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: var(--color-primary-dark);
+    border: 2px solid var(--color-bg-dark);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted-light);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted-dark);
+  }
+
   body {
     transition: background-color 0.3s ease, color 0.3s ease;
   }

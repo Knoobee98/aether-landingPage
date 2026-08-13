@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomeView from './components/HomeView';
-import ServicesView from './components/ServicesView';
-import PortfolioView from './components/PortfolioView';
-import AboutView from './components/AboutView';
-import BlogView from './components/BlogView';
 import ContactModal from './components/ContactModal';
 import LegalModal from './components/LegalModal';
-import NotFoundView from './components/NotFoundView';
 import MaintenanceView from './components/MaintenanceView';
+
+const ServicesView = lazy(() => import('./components/ServicesView'));
+const PortfolioView = lazy(() => import('./components/PortfolioView'));
+const AboutView = lazy(() => import('./components/AboutView'));
+const BlogView = lazy(() => import('./components/BlogView'));
+const NotFoundView = lazy(() => import('./components/NotFoundView'));
 import { PROJECTS as DEFAULT_PROJECTS, BLOG_POSTS as DEFAULT_BLOG_POSTS } from './data';
 import { motion, AnimatePresence } from 'motion/react';
 import { useAppNavigation } from './hooks/useAppNavigation';
@@ -115,7 +116,9 @@ export default function App() {
             className="w-full"
             id={`view-wrapper-${currentView}`}
           >
-            {renderViewContent()}
+            <Suspense fallback={<div className="h-screen w-full flex items-center justify-center animate-pulse"><span className="font-mono text-sm tracking-[0.3em] uppercase opacity-50">Memuat...</span></div>}>
+              {renderViewContent()}
+            </Suspense>
           </motion.div>
         </AnimatePresence>
       </main>
