@@ -5,6 +5,7 @@ import HomeView from './components/HomeView';
 import ContactModal from './components/ContactModal';
 import LegalModal from './components/LegalModal';
 import MaintenanceView from './components/MaintenanceView';
+import WhatsAppWidget from './components/WhatsAppWidget';
 
 const ServicesView = lazy(() => import('./components/ServicesView'));
 const PortfolioView = lazy(() => import('./components/PortfolioView'));
@@ -48,6 +49,15 @@ export default function App() {
       root.classList.remove('dark');
     }
   }, [darkMode]);
+
+  // Track page views for Google Analytics
+  useEffect(() => {
+    if (import.meta.env.VITE_GA_ID) {
+      import('react-ga4').then((ReactGA) => {
+        ReactGA.default.send({ hitType: "pageview", page: `/${currentView}` });
+      });
+    }
+  }, [currentView]);
 
   const renderViewContent = () => {
     switch (currentView) {
@@ -140,6 +150,8 @@ export default function App() {
         onClose={closeLegalModal}
         type={legalModalType}
       />
+
+      <WhatsAppWidget />
     </div>
   );
 }
