@@ -8,6 +8,8 @@ import AboutView from './components/AboutView';
 import BlogView from './components/BlogView';
 import ContactModal from './components/ContactModal';
 import LegalModal, { LegalType } from './components/LegalModal';
+import NotFoundView from './components/NotFoundView';
+import MaintenanceView from './components/MaintenanceView';
 import { PROJECTS as DEFAULT_PROJECTS, BLOG_POSTS as DEFAULT_BLOG_POSTS } from './data';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -95,18 +97,17 @@ export default function App() {
           />
         );
       default:
-        return (
-          <HomeView
-            setView={handleSetView}
-            openContact={() => setContactOpen(true)}
-            setSelectedProject={handleSelectProjectAndNavigate}
-            setSelectedPost={handleSelectPostAndNavigate}
-            projects={projects}
-            blogPosts={blogPosts}
-          />
-        );
+        return <NotFoundView setView={handleSetView} />;
     }
   };
+
+  if (import.meta.env.VITE_MAINTENANCE_MODE === 'true') {
+    return (
+      <div id="aether-app-root" className="min-h-screen flex flex-col font-sans bg-bg-light text-primary-light dark:bg-bg-dark dark:text-primary-dark">
+        <MaintenanceView />
+      </div>
+    );
+  }
 
   return (
     <div id="aether-app-root" className="min-h-screen flex flex-col justify-between font-sans bg-bg-light text-primary-light transition-colors duration-300 dark:bg-bg-dark dark:text-primary-dark">
